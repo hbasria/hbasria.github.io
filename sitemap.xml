@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
-<loc>https://hbasria.github.io//tag/design/</loc>
-<lastmod>2021-01-09T14:20:44+03:00</lastmod>
+<loc>https://hbasria.github.io//tag/reverse/</loc>
+<lastmod>2021-01-09T15:26:22+03:00</lastmod>
 </url>
 <url>
-<loc>https://hbasria.github.io//tag/jekyll/</loc>
-<lastmod>2021-01-09T14:20:44+03:00</lastmod>
+<loc>https://hbasria.github.io//tag/ssh/</loc>
+<lastmod>2021-01-09T15:26:22+03:00</lastmod>
 </url>
 <url>
-<loc>https://hbasria.github.io//tag/web/</loc>
-<lastmod>2021-01-09T14:20:44+03:00</lastmod>
+<loc>https://hbasria.github.io//tag/tunneling/</loc>
+<lastmod>2021-01-09T15:26:22+03:00</lastmod>
 </url>
 <url>
-<loc>https://hbasria.github.io//posts/chalk-sample-post-with-all-elements</loc>
-<lastmod>2017-12-21T00:00:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://hbasria.github.io//posts/configuring-chalk</loc>
-<lastmod>2017-12-22T00:00:00+03:00</lastmod>
-</url>
-<url>
-<loc>https://hbasria.github.io//posts/introducing-chalk</loc>
-<lastmod>2017-12-23T00:00:00+03:00</lastmod>
+<loc>https://hbasria.github.io//posts/reverse-ssh-tunneling</loc>
+<lastmod>2021-01-09T00:00:00+03:00</lastmod>
 </url>
 <url>
 <loc>https://hbasria.github.io//about</loc>
