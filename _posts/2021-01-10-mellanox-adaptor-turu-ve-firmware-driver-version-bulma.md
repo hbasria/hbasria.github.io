@@ -84,7 +84,7 @@ tar xzvf mft-4.15.1-9-x86_64-deb.tgz
 
 Başlangıç ​​olarak, MFT’yi çalıştırmamız gerekir:
 
-{% highlight bash %
+{% highlight bash %}
 mst start
 Starting MST (Mellanox Software Tools) driver set
 Loading MST PCI module - Success
