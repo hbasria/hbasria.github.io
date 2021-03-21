@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mellanox Adaptör Türü ve Firmware/Driver version Bulma"
-tags: [Reverse, SSH, Tunneling]
+tags: [Mellanox, firmware, install]
 ---
 
 {% highlight bash %}
