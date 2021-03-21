@@ -1,4 +1,0 @@
----
-slug: reverse
-name: Reverse
----

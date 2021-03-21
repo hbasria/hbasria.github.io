@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://hbasria.github.io/tag/reverse/</loc>
+<lastmod>2021-03-21T19:04:54+03:00</lastmod>
+</url>
+<url>
+<loc>https://hbasria.github.io/tag/ssh/</loc>
+<lastmod>2021-03-21T19:04:54+03:00</lastmod>
+</url>
+<url>
+<loc>https://hbasria.github.io/tag/tunneling/</loc>
+<lastmod>2021-03-21T19:04:54+03:00</lastmod>
+</url>
+<url>
+<loc>https://hbasria.github.io/posts/linux-sunucularda-lvm-disk-olusturma-genisletme</loc>
+<lastmod>2021-01-05T00:00:00+03:00</lastmod>
+</url>
+<url>
+<loc>https://hbasria.github.io/posts/reverse-ssh-tunneling</loc>
+<lastmod>2021-01-09T00:00:00+03:00</lastmod>
+</url>
+<url>
+<loc>https://hbasria.github.io/posts/mellanox-adaptor-turu-ve-firmware-driver-version-bulma</loc>
+<lastmod>2021-01-10T00:00:00+03:00</lastmod>
+</url>
+<url>
+<loc>https://hbasria.github.io/about</loc>
+</url>
+<url>
+<loc>https://hbasria.github.io/</loc>
+</url>
+</urlset>

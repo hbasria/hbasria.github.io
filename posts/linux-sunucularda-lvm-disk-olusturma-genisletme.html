@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>basri.me | Linux Sunucularda LVM Disk Oluşturma/Genişletme</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="Linux Sunucularda LVM Disk Oluşturma/Genişletme">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hbasria.github.io/posts/linux-sunucularda-lvm-disk-olusturma-genisletme">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="basri.me">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:url" content="https://hbasria.github.io/posts/linux-sunucularda-lvm-disk-olusturma-genisletme">
+  <meta name="twitter:title" content="Linux Sunucularda LVM Disk Oluşturma/Genişletme">
+  <meta name="twitter:description" content="">
+
+  
+    <meta property="og:image" content="https://hbasria.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+    <meta name="twitter:image" content="https://hbasria.github.io/assets/og-image-ee46bbc61b334e821e81534b1fd43f3fee6f020ec174b3c2114445695fd48c01.jpg">
+  
+
+  <link href="https://hbasria.github.io/feed.xml" type="application/rss+xml" rel="alternate" title="basri.me Last 10 blog posts" />
+
+  
+
+  
+
+    
+      <link rel="icon" type="image/x-icon" href="/assets/favicon-light-a98c41efc5ed9fcc06ac664c9e2f7a9b3c3b2e0a52357d221fe382f6f4abc8fc.ico">
+      <link rel="apple-touch-icon" href="/assets/apple-touch-icon-light-87d1f2a3a19b1500e5c1626a0492025ca5f7f97d24540dc5900288e92112925a.png">
+      <link rel="stylesheet" type="text/css" href="/assets/light-bb1553a18d0f1ccfe1aabc010584c49b4277a88503216b78906ba719e30019c1.css">
+    
+
+  
+
+</head>
+
+<body>
+  <main>
+    <div class="grid grid-centered">
+      <div class="grid-cell">
+        <nav class="header-nav scrollappear">
+  <a href="/" class="header-logo" title="basri.me">basri.me</a>
+  <ul class="header-links">
+    
+      <li>
+        <a href="/about" title="About me">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-about">
+  <use href="/assets/about-ecf154b571ab8034ae00aeed91a3b7ad68db80b46d958753ad6216c919486e88.svg#icon-about" xlink:href="/assets/about-ecf154b571ab8034ae00aeed91a3b7ad68db80b46d958753ad6216c919486e88.svg#icon-about"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+      <li>
+        <a href="https://github.com/hbasria" rel="noreferrer noopener" target="_blank" title="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-github">
+  <use href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github" xlink:href="/assets/github-094f81040819f34343ee6ffff0980f17e2807b08b595eaaf66ae3554934fd78d.svg#icon-github"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <li>
+        <a href="mailto:h@basri.me" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-email">
+  <use href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email" xlink:href="/assets/email-782473193bf750036fdb90e8daa075508a20509d01854c09f3237c144a3f0601.svg#icon-email"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+      <li>
+        <a href="/feed.xml" rel="noreferrer noopener" target="_blank" title="RSS">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-rss">
+  <use href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss" xlink:href="/assets/rss-541ec5cea9cefd10d2fcfec01888f3f231a8829940249835fa7b7b3a12ae0d0d.svg#icon-rss"></use>
+</svg>
+
+        </a>
+      </li>
+    
+    
+  </ul>
+</nav>
+
+
+
+        <article class="article scrollappear">
+          <header class="article-header">
+            <h1>Linux Sunucularda LVM Disk Oluşturma/Genişletme</h1>
+            <p></p>
+            <div class="article-list-footer">
+  <span class="article-list-date">
+    January 5, 2021
+  </span>
+  <span class="article-list-divider">-</span>
+  <span class="article-list-minutes">
+    
+    
+      2 minute read
+    
+  </span>
+  <span class="article-list-divider">-</span>
+  <div class="article-list-tags">
+    
+      
+      <a href="/tag/Linux" title="See all posts with tag ''"></a>
+    
+      
+      <a href="/tag/LVM" title="See all posts with tag ''"></a>
+    
+      
+      <a href="/tag/Disk" title="See all posts with tag ''"></a>
+    
+  </div>
+</div>
+          </header>
+
+          <div class="article-content">
+            <p>Bir Linux sistemi kurarken en önemli kararlardan biri, sistem dosyaları, ana dizinler ve diğerleri için ayrılacak depolama alanı miktarıdır. Bu noktada bir hata yaparsanız, alan kalmamış bir bölümü büyütmek külfetli ve biraz riskli olabilir.</p>
+
+<h2 id="fiziksel-birimler-physical-volumes-hacim-gruplarıvolume-groups-ve-mantıksal-birimlerlogical-volumes-oluşturma">Fiziksel Birimler (Physical Volumes), Hacim Grupları(Volume Groups) ve Mantıksal Birimler(Logical Volumes) Oluşturma</h2>
+
+<p>/dev/sdb, /dev/sdc ve /dev/sdd üzerinde fiziksel birimler oluşturmak için şunları yapın:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pvcreate /dev/sdb /dev/sdc /dev/sdd</code></pre></figure>
+
+<p>Yeni oluşturulan PV’leri şu şekilde listeleyebilirsiniz:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">pvs</code></pre></figure>
+
+<p>/dev/sdb, /dev/sdc kullanarak vg0 adlı bir birim grubu oluşturmak için (başka aygıtlar ekleme durumunu göstermek için /dev/sdd’yi daha sonra kaydedeceğiz):</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vgcreate vg0 /dev/sdb /dev/sdc</code></pre></figure>
+
+<p>Volume Groupları görmek için:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vgdisplay vg0</code></pre></figure>
+
+<p>Örneğin, sırasıyla proje dosyalarını ve sistem yedeklerini depolamak için kullanabileceğimiz vol_projects ve vol_backups adlı iki LV oluşturalım.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">lvcreate <span class="nt">-n</span> vol_projects <span class="nt">-L</span> 10G vg0
+lvcreate <span class="nt">-n</span> vol_backups <span class="nt">-l</span> 100%FREE vg0</code></pre></figure>
+
+<p>Her mantıksal birim kullanılmadan önce, üstüne bir dosya sistemi oluşturmamız gerekir.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/vg0/vol_projects
+mkfs.ext4 /dev/vg0/vol_backups</code></pre></figure>
+
+<h2 id="mantıksal-birimleri-yeniden-boyutlandırma-ve-hacim-gruplarını-genişletme">Mantıksal Birimleri Yeniden Boyutlandırma ve Hacim Gruplarını Genişletme</h2>
+
+<p>Şimdi vol_projects’te bol miktarda alan varken vol_backups’da alanınız tükenmeye başlıyor. LVM’nin doğası gereği, her dosya sistemini aynı anda yeniden boyutlandırırken ikincisinin boyutunu kolayca küçültebilir ve birincisi için tahsis edebiliriz.</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">lvreduce <span class="nt">-L</span> <span class="nt">-2</span>.5G <span class="nt">-r</span> /dev/vg0/vol_projects
+lvextend <span class="nt">-l</span> +100%FREE <span class="nt">-r</span> /dev/vg0/vol_backups</code></pre></figure>
+
+<p>Mantıksal bir birimi yeniden boyutlandırırken eksi (-) veya artı (+) işaretlerini dahil etmek önemlidir. Aksi takdirde, LV’yi yeniden boyutlandırmak yerine sabit bir boyut ayarlarsınız.</p>
+
+<p>İlk kurulumumuzdan (/dev/sdd) kalan PV’yi ekleyelim.</p>
+
+<p>/dev/sdd’yi vg0’e eklemek için:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">vgextend vg0 /dev/sdd</code></pre></figure>
+
+<p>Artık yeni eklenen alanı ihtiyaçlarınıza göre mevcut LV’leri yeniden boyutlandırmak veya gerektiğinde yenilerini oluşturmak için kullanabilirsiniz.</p>
+
+<h2 id="mantıksal-birimleri-önyükleme-aşamasında-yükleme">Mantıksal Birimleri Önyükleme aşamasında yükleme</h2>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">blkid /dev/vg0/vol_projects
+blkid /dev/vg0/vol_backups</code></pre></figure>
+
+<p>Her LV için bağlama noktaları oluşturun:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nb">mkdir</span> /home/projects
+<span class="nb">mkdir</span> /home/backups</code></pre></figure>
+
+<p>Ve /etc/fstab içine karşılık gelen girişleri ekleyin (blkid ile elde edilen UUID’leri kullandığınızdan emin olun):</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">UUID</span><span class="o">=</span>b85df913-580f-461c-844f-546d8cde4646 /home/projects	ext4 defaults 0 0
+<span class="nv">UUID</span><span class="o">=</span>e1929239-5087-44b1-9396-53e09db6eb9e /home/backups ext4	defaults 0 0</code></pre></figure>
+
+<p>Ardından değişiklikleri kaydedin ve LV’leri bağlayın:</p>
+
+<figure class="highlight"><pre><code class="language-bash" data-lang="bash">mount <span class="nt">-a</span>
+mount | <span class="nb">grep </span>home</code></pre></figure>
+
+<h1 id="kaynak">Kaynak</h1>
+
+<p>https://www.tecmint.com/manage-and-create-lvm-parition-using-vgcreate-lvcreate-and-lvextend/</p>
+
+          </div>
+          <div class="article-share">
+            
+            
+            <a href="https://twitter.com/home?status=Linux+Sunucularda+LVM+Disk+Olu%C5%9Fturma/Geni%C5%9Fletme%20-%20https://hbasria.github.io/posts/linux-sunucularda-lvm-disk-olusturma-genisletme" title="Share on Twitter" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M492 109.5c-17.4 7.7-36 12.9-55.6 15.3 20-12 35.4-31 42.6-53.6 -18.7 11.1-39.4 19.2-61.5 23.5C399.8 75.8 374.6 64 346.8 64c-53.5 0-96.8 43.4-96.8 96.9 0 7.6 0.8 15 2.5 22.1 -80.5-4-151.9-42.6-199.6-101.3 -8.3 14.3-13.1 31-13.1 48.7 0 33.6 17.2 63.3 43.2 80.7C67 210.7 52 206.3 39 199c0 0.4 0 0.8 0 1.2 0 47 33.4 86.1 77.7 95 -8.1 2.2-16.7 3.4-25.5 3.4 -6.2 0-12.3-0.6-18.2-1.8 12.3 38.5 48.1 66.5 90.5 67.3 -33.1 26-74.9 41.5-120.3 41.5 -7.8 0-15.5-0.5-23.1-1.4C62.8 432 113.7 448 168.3 448 346.6 448 444 300.3 444 172.2c0-4.2-0.1-8.4-0.3-12.5C462.6 146 479 129 492 109.5z"/></svg>
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://hbasria.github.io/posts/linux-sunucularda-lvm-disk-olusturma-genisletme" title="Share on Facebook" rel="noreferrer noopener" target="_blank">
+              <svg viewBox="0 0 512 512"><path d="M288 192v-38.1c0-17.2 3.8-25.9 30.5-25.9H352V64h-55.9c-68.5 0-91.1 31.4-91.1 85.3V192h-45v64h45v192h83V256h56.4l7.6-64H288z"/></svg>
+            </a>
+          </div>
+
+          
+        </article>
+        <footer class="footer scrollappear">
+  <p>
+    ...
+  </p>
+</footer>
+
+      </div>
+    </div>
+  </main>
+  
+
+<script src="/assets/vendor-130c9c254effc51f3283620bc635851da7b99c20901216948f11ba72ee13317f.js" type="text/javascript"></script>
+
+
+  <script src="/assets/webfonts-96493456d319d1bf419afdf8701552d4d486fee6afd304897d4fd81eb4e0cc0b.js" type="text/javascript"></script>
+
+
+
+  <script src="/assets/scrollappear-e2da8ea567e418637e31266cc5302126eaa79f62a2273739086358b589a89ee6.js" type="text/javascript"></script>
+
+
+<script src="/assets/application-cfde13ac81ddaf4351b2e739603e2baf688d0fcc9aba613fe62bbb1c7b037fb9.js" type="text/javascript"></script>
+
+
+</body>
+</html>
